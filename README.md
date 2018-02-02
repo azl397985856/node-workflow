@@ -52,26 +52,20 @@ commonjs详细介绍可以参考[这篇文章](http://wiki.commonjs.org/wiki/Pac
 值得一提的是npm的版本管理。node通过语义化的版本号管理包。你可以定义包的版本范围，
 版本范围是一个包含一个或多个空格分割的描述符，也可以直接引用一个tarball或者git url。
 
-版本范围有如下几种类型：
+介绍几种常用的版本范围：
 
 ```
-version Must match version exactly
->version Must be greater than version
->=version etc
-<version
-<=version
-~version "Approximately equivalent to version" See semver
-^version "Compatible with version" See semver
-1.2.x 1.2.0, 1.2.1, etc., but not 1.3.0
-http://... See 'URLs as Dependencies' below
-* Matches any version
-"" (just an empty string) Same as *
-version1 - version2 Same as >=version1 <=version2.
-range1 || range2 Passes if either range1 or range2 are satisfied.
-git... See 'Git URLs as Dependencies' below
-user/repo See 'GitHub URLs' below
-tag A specific version tagged and published as tag See npm-dist-tag
-path/path/path See Local Paths below
+version     严格相等，必须是这个版本
+>version    必须大于这个版本
+>=version   必须大于等于这个版本
+<version    必须小于这个版本
+<=version   必须小于等于这个版本
+~version    锁定bug fix版本
+^version    锁定小升级版本
+
+http://...  直接指定url
+*           永远用最新的
+""          永远用最新的
 ```
 #### script
 这个是脚本相关。通过它可以简单一些简单的”自动化“。
