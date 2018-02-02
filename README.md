@@ -33,8 +33,13 @@ npm由三部分组成：
 2. the registry
 3. the Command Line Interface (CLI)
 
-### 如何管理包依赖
 ### 发布一个npm包
+发布一个node包很简单。只要在建立一个包描述文件，指定name和version（语义化版本），并且name没有在npm registry中注册。你就可以执行
+```bash
+npm publish
+
+```
+等待片刻，你的包就发布到npm上了。
 ## npm script
 ### npm script是什么
 讲这个问题之前，我们来看下一个很重要的文件，包描述文件-package.json文件，它必须是一个真真正正的JSON，不能是js的对象字面量。
@@ -68,6 +73,7 @@ http://...  直接指定url
 ""          永远用最新的
 ```
 
+
 关于npm还有很多有趣的话题，比如npm是如何管理循环依赖的？npm如何管理多个依赖共同依赖同一个库不同版本的？
 npm能够保证项目依赖的稳定性吗？如果可以，是通过什么实现的？
 cnpm又是怎么做的，和npm一样吗？
@@ -92,6 +98,14 @@ cnpm又是怎么做的，和npm一样吗？
 }
 
 ```
+
+比如我们的根目录有一个包含上述script的文件，那么当我们在项目根目录执行npm run command会执行对应的命令。
+比如npm run dev，真正执行的是`webpack-dev-server --inline --progress --config build/webpack.dev.conf.js`
+命令之前可以相互调用，比如上面start命令调用dev。命令还可以根据前面的返回值执行不同的分支，比如test命令。
+
+> && 代码前面执行成功后面才会执行。  & 会并行执行
+
+上面的命令如果结合一些钩子在某些时间点执行，就可以实现简单的自动化。后面会讲解
 #### engines && browserslist
 这个是项目的兼容性相关。描述的是支持的引擎版本和支持的浏览器版本。
 
