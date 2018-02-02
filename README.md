@@ -67,8 +67,31 @@ http://...  直接指定url
 *           永远用最新的
 ""          永远用最新的
 ```
+
+关于npm还有很多有趣的话题，比如npm是如何管理循环依赖的？npm如何管理多个依赖共同依赖同一个库不同版本的？
+npm能够保证项目依赖的稳定性吗？如果可以，是通过什么实现的？
+cnpm又是怎么做的，和npm一样吗？
+
+这里没有时间对上面的问题一一解答，有兴趣的可以自行google。
 #### script
 这个是脚本相关。通过它可以简单一些简单的”自动化“。
+
+我们通常会在项目中定义若干task，然后在必要的时候执行这些task。
+下面是一个script obejct的例子：
+
+```json
+"scripts": {
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "start": "npm run dev",
+    "unit": "jest",
+    "e2e": "mocha test/e2e/puppeteer",
+    "test": "npm run unit && npm run e2e",
+    "unit:watch": "jest --watch",
+    "lint": "eslint --ext .js,.vue src",
+    "build": "node build/build.js",
+}
+
+```
 #### engines && browserslist
 这个是项目的兼容性相关。描述的是支持的引擎版本和支持的浏览器版本。
 
