@@ -3,7 +3,7 @@
 ## node
 ### node是什么
 Node.js® 是一个基于 Chrome V8 引擎的 JavaScript 运行时。 Node.js 使用高效、轻量级的事件驱动、非阻塞 I/O 模型。
-它的包生态系统，npm，是目前世界上最大的开源库生态系统。
+它的包生态系统npm，是目前世界上最大的开源库生态系统。
 ### 为什么是node
 1. 语法一致
 一个重要的原因在于node的语法和前端用的开发语言javascipt是一致的。原因就在于node是一个基于V8的js runtime。
@@ -40,8 +40,8 @@ npm publish
 
 ```
 等待片刻，你的包就发布到npm上了。
-## npm script
-### npm script是什么
+
+### package.json
 讲这个问题之前，我们来看下一个很重要的文件，包描述文件-package.json文件，它必须是一个真真正正的JSON，不能是js的对象字面量。
 package.json 其本质上一个commonjs规范中的一个很重要的文件。不过由于npm实现太普及了，以至于人们认为package.json是npm独有的。
 commonjs详细介绍可以参考[这篇文章](http://wiki.commonjs.org/wiki/Packages/1.1)
@@ -121,7 +121,14 @@ USE_MOCK=true npm start
 
 更多关于[package.json字段的解释](https://docs.npmjs.com/files/package.json)
 ### 结合hooks实现代码检测以及CI，CD
+我们可以在代码仓库中增加钩子，在提交代码前后，推送仓库前后做一些自动化任务。这些任务可以在本地执行，
+也可以放到服务器执行。比如在本地提交代码前执行代码检测。在关键分支提交代码前执行单元测试以保证关键分支的稳定性。
+不同的代码仓库，比如git和svn配置方式略有不同，但是基本原理都是一样的。
+
+> 之所以不在所有分支执行单元测试，是出于稳定性和效率的平衡取舍
+
 ## workflow
 ### 前端有哪些优秀的工作流
+将需求的生命周期进行一定的拆解，我们会发现其中有很多可以改进，可以自动化的环节。
 
 ### 如何用node + npm实现
