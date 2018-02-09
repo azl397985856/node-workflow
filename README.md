@@ -199,5 +199,13 @@ qy.stderr.on("data", data => {
 
 ```
 
-上面
+上面其实就是fork一个进程执行一个脚本，然后监听执行结果。
+因此了解操作系统相关知识，学习shell编程对于学习node以及自动化方面都是很有必要的。
+
+# 参考资料
+[nodejs](https://github.com/nodejs/node)
+[thenodeway](http://thenodeway.io/introduction/#build-small-single-purpose-modules)
+[reddit-node](https://www.reddit.com/r/node/)
+[reddit-bash](https://www.reddit.com/r/bash/)
+[bash-guide](https://github.com/Idnan/bash-guide)
 
