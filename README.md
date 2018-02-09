@@ -81,7 +81,81 @@ http://...  直接指定url
 *           永远用最新的
 ""          永远用最新的
 ```
+#### 依赖锁定
+前面介绍了版本范围，那么是否意味着如果依赖的版本更新，同时满足我们的版本范围，就会自动更新。
+这样就会造成潜在问题，尤其是生产环境。
 
+下面是官方给的一个例子：
+
+Package A
+```json
+{
+  "name": "A",
+  "version": "0.1.0",
+  "dependencies": {
+    "B": "<0.1.0"
+  }
+}
+
+
+```
+Package B 
+```json
+{
+  "name": "B",
+  "version": "0.0.1",
+  "dependencies": {
+    "C": "<0.1.0"
+  }
+}
+```
+Package C
+```json
+{
+  "name": "C",
+  "version": "0.0.1"
+}
+```
+
+那么A的结构就会是这样：
+
+```json
+A@0.1.0
+`-- B@0.0.1
+    `-- C@0.0.1
+```
+如果B@0.0.2发布了,那么A的结构会是这样:
+```json
+A@0.1.0
+`-- B@0.0.2
+    `-- C@0.0.1
+```
+
+现实情况肯定会更加复杂，B还可能依赖其他库。
+因此为了保证每次安装依赖，都是一样的。不同人员和不同机器都不会受影响。我们需要一个依赖锁定机制。
+这个机制在npm中体现为package-lock.json 或 npm-shrinkwrap.json. 
+
+文件内容大概为：
+
+```json
+{
+  "name": "A",
+  "version": "0.1.0",
+  ...metadata fields...
+  "dependencies": {
+    "B": {
+      "version": "0.0.1",
+      "resolved": "https://registry.npmjs.org/B/-/B-0.0.1.tgz",
+      "integrity": "sha512-DeAdb33F+"
+      "dependencies": {
+        "C": {
+          "version": "git://github.com/org/C.git#5c380ae319fc4efe9e7f2d9c78b0faa588fd99b4"
+        }
+      }
+    }
+  }
+}
+```
 
 关于npm还有很多有趣的话题，比如npm是如何管理循环依赖的？npm如何管理多个依赖共同依赖同一个库不同版本的？
 npm能够保证项目依赖的稳定性吗？如果可以，是通过什么实现的？
