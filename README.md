@@ -189,6 +189,7 @@ USE_MOCK=true npm start
 ```js
 const { spawn } = require("child_process");
 
+// files已经在我们的应用中声明并注入
 const qy = spawn("bin/qy-cli.js", ["--img-list", files.toString()]);
 
 qy.stdout.on("data", data => {
