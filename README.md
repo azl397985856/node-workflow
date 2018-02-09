@@ -39,7 +39,16 @@ npm由三部分组成：
 npm publish
 
 ```
-等待片刻，你的包就发布到npm上了。
+等待片刻，你的包就发布到npm上了。 需要更新npm也是一样的操作。只是你需要先修改version版本。
+
+### npx
+npm 5.2.0 版本中内置了伴生命令：npx，类似于 npm 简化了项目开发中的依赖安装与管理，该工具致力于提升开发者使用包提供的命令行的体验。npx 允许我们使用本地安装的命令行工具而不需要再定义 npm run-script，并且允许我们仅执行一次脚本而不需要再将其实际安装到本地；同时 npx 还允许我们以不同的 node 版本来运行指定命令、允许我们交互式地开发 node 命令行工具以及便捷地安装来自于 gist 的脚本。
+
+```bash
+npx browserslist
+npx jest
+npx https://gist.github.com/zkat/4bc19503fe9e9309e2bfaa2c58074d32 // 支持gist
+```
 
 ### package.json
 讲这个问题之前，我们来看下一个很重要的文件，包描述文件-package.json文件，它必须是一个真真正正的JSON，不能是js的对象字面量。
