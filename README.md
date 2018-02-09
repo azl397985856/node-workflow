@@ -204,8 +204,12 @@ qy.stderr.on("data", data => {
 
 # 参考资料
 [nodejs](https://github.com/nodejs/node)
+
 [thenodeway](http://thenodeway.io/introduction/#build-small-single-purpose-modules)
+
 [reddit-node](https://www.reddit.com/r/node/)
+
 [reddit-bash](https://www.reddit.com/r/bash/)
+
 [bash-guide](https://github.com/Idnan/bash-guide)
 
