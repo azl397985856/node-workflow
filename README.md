@@ -184,4 +184,20 @@ USE_MOCK=true npm start
 类似我们可以完善的工作流还有很多，比如一键发布脚本，环境检测的脚本，本地代理工具等等。
 关键还是要想到，只要能想到，实现只是技术问题。
 
+值得一提的是，node提供了很多底层命令使得我们可以和底层做一些交互。比如调用shell，并获取shell的返回值。
+
+```js
+const qy = spawn("bin/qy-cli.js", ["--img-list", files.toString()]);
+
+qy.stdout.on("data", data => {
+  console.log(data + "");
+});
+
+qy.stderr.on("data", data => {
+  console.error(data + "");
+});
+
+```
+
+上面
 
