@@ -187,6 +187,8 @@ USE_MOCK=true npm start
 值得一提的是，node提供了很多底层命令使得我们可以和底层做一些交互。比如调用shell，并获取shell的返回值。
 
 ```js
+const { spawn } = require("child_process");
+
 const qy = spawn("bin/qy-cli.js", ["--img-list", files.toString()]);
 
 qy.stdout.on("data", data => {
